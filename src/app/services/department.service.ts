@@ -15,4 +15,8 @@ export class DepartmentService {
     return this.http.get(environment.baseUrl+'/departments')
       .pipe(map(data=>data))
   }
+
+  save(department:Department):Observable<any>{
+    return this.http.post(environment.baseUrl+'/departments/save',department).pipe(map(data=>data))
+  }
 }

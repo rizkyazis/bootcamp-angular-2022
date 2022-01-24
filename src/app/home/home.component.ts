@@ -41,19 +41,18 @@ export class HomeComponent implements OnInit {
         console.log(e)
       },
       complete: () => {
-        console.log("Loaded list Departments")
-      }
-    })
-
-    this.category.list().subscribe({
-      next: categories => {
-        this.listCategory = categories;
-      },
-      error: e => {
-        console.log(e)
-      },
-      complete: () => {
-        console.log("Loaded List Categories")
+        console.log("Loaded list Departments");
+        this.category.list().subscribe({
+          next: categories => {
+            this.listCategory = categories;
+          },
+          error: e => {
+            console.log(e)
+          },
+          complete: () => {
+            console.log("Loaded List Categories")
+          }
+        })
       }
     })
   }
