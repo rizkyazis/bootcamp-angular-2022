@@ -1,31 +1,45 @@
-<h2>Departments</h2>
-<table class="table table-striped">
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <tr *ngFor="let id of listDepartment">
-    <td>{{id.id}}</td>
-    <td>{{id.name}}</td>
-    <td>{{id.description}}</td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col p-5">
+    <h2>Departments</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let id of listDepartment">
+        <td>{{id.id}}</td>
+        <td>{{id.name}}</td>
+        <td>{{id.description}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col p-5">
+    <h2>Category</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Department</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let id of listCategory">
+        <td>{{id.category_id}}</td>
+        <td>{{id.name}}</td>
+        <td>{{id.description}}</td>
+        <td>{{id.department.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h2>Category</h2>
-<table class="table table-striped">
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Department</th>
-  </tr>
-  <tr *ngFor="let id of listCategory">
-    <td>{{id.category_id}}</td>
-    <td>{{id.name}}</td>
-    <td>{{id.description}}</td>
-    <td>{{id.department.name}}</td>
-  </tr>
-</table>
 
 
