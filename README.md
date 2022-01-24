@@ -1,5 +1,6 @@
-# Bootcamp20222
+# Bootcamp2022
 
+This Project used by Rizky Azis to learn using Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
 ## Development server
