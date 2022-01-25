@@ -51,7 +51,7 @@ export class DepartmentComponent implements OnInit {
           this.router.navigateByUrl("home")
         },
         error: e => {
-          console.log("hei");
+          this.message = e.error.status;
         },
         complete: () => {
           console.log("Department Created")
