@@ -16,7 +16,16 @@ export class DepartmentService {
       .pipe(map(data=>data))
   }
 
+  getById(id:String): Observable<any>{
+    return this.http.get(environment.baseUrl+'/departments/'+id)
+      .pipe(map(data=>data))
+  }
+
   save(department:Department):Observable<any>{
     return this.http.post(environment.baseUrl+'/departments/save',department).pipe(map(data=>data))
+  }
+
+  update(department:Department):Observable<any>{
+    return this.http.put(environment.baseUrl+'/departments/update',department).pipe(map(data=>data))
   }
 }
