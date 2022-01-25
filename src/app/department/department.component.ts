@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DepartmentService} from "../services/department.service";
 import {Department} from "../model/department";
 
@@ -17,9 +17,9 @@ export class DepartmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuild.group({
-      'id':[null],
-      'name':[null],
-      'description':[null]
+      'id':new FormControl(null,[Validators.pattern("^[0-9]*$")]),
+      'name':new FormControl(null, [Validators.required]),
+      'description':new FormControl(null, [Validators.required])
     })
   }
 
