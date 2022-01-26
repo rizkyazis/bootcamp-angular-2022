@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DepartmentformComponent } from './departmentform/departmentform.component';
 import { DepartmentComponent } from './department/department.component';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { DepartmentComponent } from './department/department.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    DepartmentComponent
+    DepartmentformComponent,
+    DepartmentComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -21,15 +21,12 @@ export class HomeComponent implements OnInit {
   department!: Department;
   message!: any[];
 
-  constructor(private ds: DepartmentService, private category: CategoryService, private formBuild: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.formDeptDelete = this.formBuild.group({
-      'id': new FormControl(null, [Validators.pattern("^[0-9]*$")]),
-    })
+  constructor(private ds: DepartmentService, private category: CategoryService) {
   }
 
   ngOnInit(): void {
     //The Old Way
-    // this.department.list().subscribe(
+    // this.departmentform.list().subscribe(
     //   departments => {
     //     this.list = departments
     //   },
@@ -62,23 +59,6 @@ export class HomeComponent implements OnInit {
             console.log("Loaded List Categories")
           }
         })
-      }
-    })
-  }
-
-  deleteDepartment(id: number): void {
-    let dept = <Department>{};
-    dept.id = id;
-    console.log(dept);
-    this.ds.delete(dept).subscribe({
-      next: hasil => {
-        console.log(hasil.status)
-      },
-      error: e => {
-        this.message = e.error.status;
-      },
-      complete: () => {
-        this.router.navigate([this.router.url])
       }
     })
   }

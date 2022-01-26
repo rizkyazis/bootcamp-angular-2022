@@ -1,76 +1,56 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Department} from "../model/department";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DepartmentService} from "../services/department.service";
-import {Department} from "../model/department";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
-  styleUrls: ['./department.component.css']
+  styleUrls: ['./department.component.css'],
 })
 export class DepartmentComponent implements OnInit {
-  form!: FormGroup;
-  id!: String;
+  formDeptDelete!: FormGroup;
+  listDepartment!: [Department];
   department!: Department;
-  message!:any[];
+  message!: any[];
 
-  constructor(private formBuild: FormBuilder, private ds: DepartmentService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.form = this.formBuild.group({
-      'id':new FormControl(null,[Validators.pattern("^[0-9]*$")]),
-      'name':new FormControl(null, [Validators.required]),
-      'description':new FormControl(null, [Validators.required])
+  constructor(private ds: DepartmentService, private formBuild: FormBuilder, private router: Router) {
+    this.formDeptDelete = this.formBuild.group({
+      'id': new FormControl(null, [Validators.pattern("^[0-9]*$")]),
     })
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(rute =>{
-      this.id = rute['id'];
-      if (this.id){
-        this.ds.getById(this.id).subscribe({
-          next:value => {
-            this.form.controls['id'].setValue(this.id);
-            this.form.controls['name'].setValue(value.name);
-            this.form.controls['description'].setValue(value.description);
-          }
-        })
+    this.ds.list().subscribe({
+        next: departments => {
+          this.listDepartment = departments;
+        },
+        error: e => {
+          console.log(e)
+        },
+        complete: () => {
+          console.log("Loaded list Departments");
+        }
       }
-    })
+    )
   }
 
-  submit(): void {
+  deleteDepartment(id: number): void {
     let dept = <Department>{};
-    dept.name = this.form.controls['name'].value;
-    dept.description = this.form.controls['description'].value;
-
-    if (this.id){
-      dept.id = this.form.controls['id'].value;
-      this.ds.update(dept).subscribe({
-        next: hasil => {
-          this.department = hasil;
-          this.router.navigateByUrl("home")
-        },
-        error: e => {
-          this.message = e.error.status;
-        },
-        complete: () => {
-          console.log("Department Created")
-        }
-      })
-    }else {
-      this.ds.save(dept).subscribe({
-        next: hasil => {
-          this.department = hasil;
-          this.router.navigateByUrl("home")
-        },
-        error: e => {
-          this.message = e.error.status;
-        },
-        complete: () => {
-          console.log("Department Created")
-        }
-      })
-    }
+    dept.id = id;
+    console.log(dept);
+    this.ds.delete(dept).subscribe({
+      next: hasil => {
+        console.log(hasil.status)
+      },
+      error: e => {
+        this.message = e.error.status;
+      },
+      complete: () => {
+        this.router.navigate([this.router.url])
+      }
+    })
   }
 
 }
