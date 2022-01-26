@@ -3,6 +3,9 @@ import {DepartmentService} from "../services/department.service";
 import {Department} from "../model/department";
 import {CategoryService} from "../services/category.service";
 import {Category} from "../model/category";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {BigInteger} from "@angular/compiler/src/i18n/big_integer";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,10 +15,16 @@ import {Category} from "../model/category";
 })
 export class HomeComponent implements OnInit {
 
+  formDeptDelete!: FormGroup;
   listDepartment!: [Department];
   listCategory!: [Category];
+  department!: Department;
+  message!: any[];
 
-  constructor(private department: DepartmentService, private category: CategoryService) {
+  constructor(private ds: DepartmentService, private category: CategoryService, private formBuild: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.formDeptDelete = this.formBuild.group({
+      'id': new FormControl(null, [Validators.pattern("^[0-9]*$")]),
+    })
   }
 
   ngOnInit(): void {
@@ -33,7 +42,7 @@ export class HomeComponent implements OnInit {
     // )
 
     //The New Way
-    this.department.list().subscribe({
+    this.ds.list().subscribe({
       next: departments => {
         this.listDepartment = departments;
       },
@@ -53,6 +62,23 @@ export class HomeComponent implements OnInit {
             console.log("Loaded List Categories")
           }
         })
+      }
+    })
+  }
+
+  deleteDepartment(id: number): void {
+    let dept = <Department>{};
+    dept.id = id;
+    console.log(dept);
+    this.ds.delete(dept).subscribe({
+      next: hasil => {
+        console.log(hasil.status)
+      },
+      error: e => {
+        this.message = e.error.status;
+      },
+      complete: () => {
+        this.router.navigate([this.router.url])
       }
     })
   }

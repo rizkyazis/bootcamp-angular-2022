@@ -61,7 +61,7 @@ export class DepartmentComponent implements OnInit {
       this.ds.save(dept).subscribe({
         next: hasil => {
           this.department = hasil;
-          this.router.navigateByUrl("departments/edit/" + hasil.id)
+          this.router.navigateByUrl("home")
         },
         error: e => {
           this.message = e.error.status;
@@ -72,6 +72,5 @@ export class DepartmentComponent implements OnInit {
       })
     }
   }
-
 
 }
