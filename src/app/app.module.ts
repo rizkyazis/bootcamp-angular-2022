@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { DepartmentformComponent } from './departmentform/departmentform.component';
+import { DepartmentFormComponent } from './department-form/department-form.component';
 import { DepartmentComponent } from './department/department.component';
 import { CategoryComponent } from './category/category.component';
-import { CategoryformComponent } from './categoryform/categoryform.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
+import { MessageParentComponent } from './message-parent/message-parent.component';
+import { MessageChildComponent } from './message-child/message-child.component';
 
 
 @NgModule({
@@ -18,10 +20,12 @@ import { CategoryformComponent } from './categoryform/categoryform.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    DepartmentformComponent,
+    DepartmentFormComponent,
     DepartmentComponent,
     CategoryComponent,
-    CategoryformComponent
+    CategoryFormComponent,
+    MessageParentComponent,
+    MessageChildComponent
   ],
   imports: [
     BrowserModule,

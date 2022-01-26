@@ -8,13 +8,14 @@ import {Category} from "../model/category";
 
 @Component({
   selector: 'app-categoryform',
-  templateUrl: './categoryform.component.html',
-  styleUrls: ['./categoryform.component.css']
+  templateUrl: './category-form.component.html',
+  styleUrls: ['./category-form.component.css']
 })
-export class CategoryformComponent implements OnInit {
+export class CategoryFormComponent implements OnInit {
   form!: FormGroup;
   id!: String;
-  caetgory!: Category;
+  category!: Category;
+  listDepartment!:[Department];
   message!:any[];
 
   constructor(private formBuild: FormBuilder, private cs: CategoryService, private ds:DepartmentService, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -28,12 +29,14 @@ export class CategoryformComponent implements OnInit {
 
   ngOnInit(): void {
     this.ds.list().subscribe({
-      next: hasil=>{
-
-      },error: e=>{
-
-      },complete:()=>{
-
+      next: departments => {
+        this.listDepartment = departments;
+      },
+      error: e => {
+        console.log(e)
+      },
+      complete: () => {
+        console.log("Loaded list Departments");
       }
     })
 
@@ -62,11 +65,12 @@ export class CategoryformComponent implements OnInit {
     cat.department = dept;
 
     if (this.id){
-      dept.id = this.form.controls['id'].value;
+      cat.id = this.form.controls['id'].value;
+      console.log(cat);
       this.cs.update(cat).subscribe({
         next: hasil => {
-          this.caetgory = hasil;
-          this.router.navigateByUrl("home")
+          this.category = hasil;
+          this.router.navigateByUrl("categories")
         },
         error: e => {
           this.message = e.error.status;
@@ -78,8 +82,8 @@ export class CategoryformComponent implements OnInit {
     }else {
       this.cs.save(cat).subscribe({
         next: hasil => {
-          this.caetgory = hasil;
-          this.router.navigateByUrl("home")
+          this.category = hasil;
+          this.router.navigateByUrl("categories")
         },
         error: e => {
           this.message = e.error.status;

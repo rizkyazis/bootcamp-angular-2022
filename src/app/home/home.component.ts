@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     //The Old Way
-    // this.departmentform.list().subscribe(
+    // this.department-form.list().subscribe(
     //   departments => {
     //     this.list = departments
     //   },

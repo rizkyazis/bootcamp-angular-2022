@@ -21,16 +21,13 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Department</label>
-      <select name="department" id="department" class="form-control" formControlName="department">
-        <option value="">
-
-        </option>
+      <select name="department" id="department" class="form-control" formControlName="department" >
+        <option  *ngFor="let id of listDepartment" value="{{id.id}}" >{{id.name}}</option>
       </select>
       <span *ngIf="form.controls['name']?.errors && form.controls['name']?.touched" class="help-block">
         This field is required
     </span>
     </div>
-    <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">Description</label>
       <textarea class="form-control" name="description" id="description" cols="30" rows="3"

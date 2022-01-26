@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DepartmentformComponent } from './departmentform.component';
+import { MessageParentComponent } from './message-parent.component';
 
-describe('DepartmentComponent', () => {
-  let component: DepartmentformComponent;
-  let fixture: ComponentFixture<DepartmentformComponent>;
+describe('MessageParentComponent', () => {
+  let component: MessageParentComponent;
+  let fixture: ComponentFixture<MessageParentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DepartmentformComponent ]
+      declarations: [ MessageParentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DepartmentformComponent);
+    fixture = TestBed.createComponent(MessageParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

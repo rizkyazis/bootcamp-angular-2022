@@ -6,10 +6,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-department',
-  templateUrl: './departmentform.component.html',
-  styleUrls: ['./departmentform.component.css']
+  templateUrl: './department-form.component.html',
+  styleUrls: ['./department-form.component.css']
 })
-export class DepartmentformComponent implements OnInit {
+export class DepartmentFormComponent implements OnInit {
   form!: FormGroup;
   id!: String;
   department!: Department;

@@ -1,0 +1,17 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" name="name" id="name" formControlName="name" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Message</label>
+      <textarea class="form-control" name="description" id="description" cols="30" rows="3"
+                formControlName="message"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="sendChild()">Submit</button>
+  </form>
+  <br>
+  <hr>
+  <app-message-child [message]="messageSend" (sendMessage)="acceptChild($event)"></app-message-child>
+</div>
