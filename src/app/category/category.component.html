@@ -7,15 +7,22 @@
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Department</th>
+      <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
-    <!--  <tr *ngFor="let id of listCategory">-->
-    <!--    <td>{{id.category_id}}</td>-->
-    <!--    <td>{{id.name}}</td>-->
-    <!--    <td>{{id.description}}</td>-->
-    <!--    <td>{{id.department.name}}</td>-->
-    <!--  </tr>-->
+      <tr *ngFor="let id of listCategory">
+        <td>{{id.id}}</td>
+        <td>{{id.name}}</td>
+        <td>{{id.description}}</td>
+        <td>{{id.department.name}}</td>
+        <td>
+          <a href="/categories/edit/{{id.id}}" class="btn  btn-sm btn-primary m-1">Update</a>
+          <form [formGroup]="formCatDelete" (ngSubmit)="deleteCategory(id.id)">
+            <button type="submit" class="btn btn-sm btn-danger m-1">Delete</button>
+          </form>
+        </td>
+      </tr>
     </tbody>
   </table>
 

@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DepartmentformComponent } from './departmentform/departmentform.component';
 import { DepartmentComponent } from './department/department.component';
 import { CategoryComponent } from './category/category.component';
+import { CategoryformComponent } from './categoryform/categoryform.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CategoryComponent } from './category/category.component';
     NavbarComponent,
     DepartmentformComponent,
     DepartmentComponent,
-    CategoryComponent
+    CategoryComponent,
+    CategoryformComponent
   ],
   imports: [
     BrowserModule,

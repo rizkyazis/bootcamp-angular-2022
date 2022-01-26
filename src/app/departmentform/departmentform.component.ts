@@ -54,7 +54,7 @@ export class DepartmentformComponent implements OnInit {
           this.message = e.error.status;
         },
         complete: () => {
-          console.log("Department Created")
+          console.log("Department Updated")
         }
       })
     }else {
