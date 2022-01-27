@@ -29,4 +29,9 @@ export class ProductTableComponent implements OnInit, OnChanges {
     }
   }
 
+  delete(id:number):void{
+    this.total = this.total - (this.listCart[id].product.price * this.listCart[id].qty)
+    this.listCart.splice(id,1);
+  }
+
 }
