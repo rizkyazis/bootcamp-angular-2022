@@ -1,0 +1,29 @@
+
+<div class="container">
+  <h2>Cart</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of listCart">
+      <td>{{item.product.id}}</td>
+      <td>{{item.product.name}}</td>
+      <td>{{(item.product.price).toFixed(2)}}</td>
+      <td>{{item.qty}}</td>
+      <td>{{(item.qty * item.product.price).toFixed(2)}}</td>
+    </tr>
+    <tr *ngIf="total" class="table-primary">
+      <td colspan="4" ><b>Total</b></td>
+      <td >{{total.toFixed()}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

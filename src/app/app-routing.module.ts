@@ -6,6 +6,7 @@ import {DepartmentComponent} from "./department/department.component";
 import {CategoryComponent} from "./category/category.component";
 import {CategoryFormComponent} from "./category-form/category-form.component";
 import {MessageParentComponent} from "./message-parent/message-parent.component";
+import {ProductComponent} from "./product/product.component";
 
 const routes: Routes =[
   {path:'home',component:HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes =[
   {path:'categories/add',component:CategoryFormComponent},
   {path:'categories/edit/:id',component:CategoryFormComponent},
   {path:'message',component:MessageParentComponent},
+  {path:'products',component:ProductComponent},
 
 ];
 

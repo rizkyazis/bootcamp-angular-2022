@@ -13,6 +13,8 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { MessageParentComponent } from './message-parent/message-parent.component';
 import { MessageChildComponent } from './message-child/message-child.component';
+import { ProductComponent } from './product/product.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { MessageChildComponent } from './message-child/message-child.component';
     CategoryComponent,
     CategoryFormComponent,
     MessageParentComponent,
-    MessageChildComponent
+    MessageChildComponent,
+    ProductComponent,
+    ProductTableComponent
   ],
   imports: [
     BrowserModule,
