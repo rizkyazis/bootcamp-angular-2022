@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
       next: hasil => {
         this.product = hasil;
       }, error: err => {
-        this.message = err.error.status;
+        alert("Data not found")
       }, complete: () => {
         console.log("Loaded data product")
       }
