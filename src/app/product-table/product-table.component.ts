@@ -18,17 +18,24 @@ export class ProductTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    //untuk cart
     if (this.listCart){
       this.listCart.push(this.cart)
-      this.total=this.total+(this.cart.product.price * this.cart.qty)
     }else{
       if (this.cart){
         this.listCart=[this.cart];
-        this.total=(this.cart.product.price * this.cart.qty)
       }
+    }
+
+    //untuk total harga
+    if (this.total){
+      this.total=this.total+(this.cart.product.price * this.cart.qty)
+    }else{
+      this.total=(this.cart.product.price * this.cart.qty)
     }
   }
 
+  //hapus cart
   delete(id:number):void{
     this.total = this.total - (this.listCart[id].product.price * this.listCart[id].qty)
     this.listCart.splice(id,1);
