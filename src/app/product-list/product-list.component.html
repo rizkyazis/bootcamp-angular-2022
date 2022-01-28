@@ -1,0 +1,16 @@
+<div class="container">
+  <form [formGroup]="form" >
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="email" name="name" id="name" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" name="description" id="description" cols="30" rows="3"
+                formControlName="description"></textarea>
+    </div>
+    <button type="button"  (click)="find()" class="btn btn-primary">Submit</button>
+  </form>
+  <table datatable [dtOptions]="dtOptions" class="table table-hover">
+  </table>
+</div>

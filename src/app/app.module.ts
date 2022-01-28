@@ -15,6 +15,8 @@ import { MessageParentComponent } from './message-parent/message-parent.componen
 import { MessageChildComponent } from './message-child/message-child.component';
 import { ProductComponent } from './product/product.component';
 import { ProductTableComponent } from './product-table/product-table.component';
+import {DataTablesModule} from "angular-datatables";
+import {ProductListComponent} from "./product-list/product-list.component";
 
 
 @NgModule({
@@ -29,14 +31,16 @@ import { ProductTableComponent } from './product-table/product-table.component';
     MessageParentComponent,
     MessageChildComponent,
     ProductComponent,
-    ProductTableComponent
+    ProductTableComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
